@@ -1,8 +1,9 @@
-import { addBook as addBookAction, getLocalStorageData as getLocalStorageDataAction } from "./librarySlice"
+import { addBook as addBookAction, getLocalStorageData as getLocalStorageDataAction} from "./librarySlice"
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import BootstrapComponent from "../../components/BootstrapComponent";
-import List from "../../../common/List";
+import List from "../../common/List";
+import DeleteAllBtn from "../../common/DeleteAllBtn";
 
 
 const LibraryView = () => {
@@ -73,6 +74,7 @@ const LibraryView = () => {
         </BootstrapComponent>
         <main className="container">
           <List data={libraryData}/>
+          <DeleteAllBtn />
         </main>
       </>
   );
