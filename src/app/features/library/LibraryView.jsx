@@ -74,7 +74,9 @@ const LibraryView = () => {
         </BootstrapComponent>
         <main className="container">
           <List data={libraryData}/>
-          <DeleteAllBtn />
+
+          {libraryData.length > 0 && <DeleteAllBtn />}
+
         </main>
       </>
   );
