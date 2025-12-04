@@ -74,8 +74,6 @@ REJECTED
 
 */
 
-
-
 const booksSlice = createSlice({
   name: "books",
   initialState: initialState,

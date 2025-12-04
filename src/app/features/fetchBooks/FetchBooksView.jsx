@@ -2,11 +2,13 @@ import BootstrapComponent from "../../components/BootstrapComponent";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchBooks as fetchBooksAsyncAction} from "./fetchBooksSlice";
+import Spinner from "../../common/Spinner";
+import Alerts from "../../common/Alerts";
+import Card from "../../common/Card";
 
 const FetchBooksView = () => {
 
   const [title, setTitle] = useState("");
-
 
   const booksSliceData = useSelector((state) => state.search);
   console.log(booksSliceData)
@@ -38,9 +40,19 @@ const FetchBooksView = () => {
           </div>
             <div className="row justify-content-center mt-2">
               <button className="btn btn-warning col-lg-2">Rechercher</button>
-            </div>
+            </div>é
         </form>
       </BootstrapComponent>
+
+      <main className="container">
+        <div className="accordion">
+          {
+            booksSliceData.isLoading ? <Spinner />
+            : booksSliceData.error !== "" ? <Alerts> {booksSliceData.error} </Alerts>
+            : <Card booksArray={booksSliceData.fetchedBooks}/>
+          }
+        </div>
+      </main>
     </>
   );
 };
